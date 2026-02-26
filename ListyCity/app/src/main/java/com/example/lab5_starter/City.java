@@ -2,7 +2,7 @@ package com.example.lab5_starter;
 
 import java.io.Serializable;
 
-// Movie object
+// City object
 public class City implements Serializable {
 
     // attributes
@@ -10,6 +10,10 @@ public class City implements Serializable {
     private String province;
 
     // constructor
+    public City() {
+        // Required for Firestore
+    }
+
     public City(String name, String province) {
         this.name = name;
         this.province = province;
