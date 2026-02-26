@@ -8,9 +8,6 @@ import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -95,5 +92,13 @@ public class MainActivity extends AppCompatActivity implements CityDialogFragmen
             data.put("province", newProvince);
             citiesRef.document(city.getName()).update(data);
         }
+    }
+
+    @Override
+    public void deleteCity(City city) {
+        citiesRef.document(city.getName())
+                .delete()
+                .addOnSuccessListener(aVoid -> Log.d("Firestore", "City deleted"))
+                .addOnFailureListener(e -> Log.e("Firestore", "Error deleting city", e));
     }
 }
